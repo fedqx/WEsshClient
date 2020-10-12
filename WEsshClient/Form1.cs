@@ -22,8 +22,8 @@ namespace WEsshClient
         {
             Process process = new Process();
 
-            process.StartInfo.FileName = "C:\\Windows\\System32\\cmd.exe";
-            process.StartInfo.Arguments = "/K C:\\Users\\f3dqx\\server.bat";
+            process.StartInfo.FileName = "C:\\Windows\\system32\\cmd.exe";
+            process.StartInfo.Arguments = " /C ssh f3dqx@127.0.0.1";
             
             process.Start();
 
