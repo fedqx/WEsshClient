@@ -34,12 +34,16 @@
             this.ipbox = new System.Windows.Forms.TextBox();
             this.portbox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.portcheckbox = new System.Windows.Forms.CheckBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.connectbutton = new System.Windows.Forms.Button();
+            this.profilenamebox = new System.Windows.Forms.TextBox();
+            this.saveprofilebutton = new System.Windows.Forms.Button();
+            this.profilebox = new System.Windows.Forms.ListBox();
+            this.loadprofilebutton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -72,14 +76,14 @@
             this.ipbox.Location = new System.Drawing.Point(192, 29);
             this.ipbox.Name = "ipbox";
             this.ipbox.Size = new System.Drawing.Size(100, 22);
-            this.ipbox.TabIndex = 3;
+            this.ipbox.TabIndex = 1;
             // 
             // portbox
             // 
             this.portbox.Location = new System.Drawing.Point(192, 116);
             this.portbox.Name = "portbox";
             this.portbox.Size = new System.Drawing.Size(100, 22);
-            this.portbox.TabIndex = 5;
+            this.portbox.TabIndex = 3;
             // 
             // label3
             // 
@@ -90,15 +94,15 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Port";
             // 
-            // checkBox1
+            // portcheckbox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(66, 173);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(138, 21);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Port Forwarding?";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.portcheckbox.AutoSize = true;
+            this.portcheckbox.Location = new System.Drawing.Point(66, 173);
+            this.portcheckbox.Name = "portcheckbox";
+            this.portcheckbox.Size = new System.Drawing.Size(138, 21);
+            this.portcheckbox.TabIndex = 6;
+            this.portcheckbox.Text = "Port Forwarding?";
+            this.portcheckbox.UseVisualStyleBackColor = true;
             // 
             // listBox1
             // 
@@ -132,7 +136,7 @@
             this.textBox1.Location = new System.Drawing.Point(237, 221);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 11;
+            this.textBox1.TabIndex = 4;
             // 
             // connectbutton
             // 
@@ -144,17 +148,57 @@
             this.connectbutton.UseVisualStyleBackColor = true;
             this.connectbutton.Click += new System.EventHandler(this.connectbutton_Click);
             // 
+            // profilenamebox
+            // 
+            this.profilenamebox.Location = new System.Drawing.Point(551, 218);
+            this.profilenamebox.Name = "profilenamebox";
+            this.profilenamebox.Size = new System.Drawing.Size(100, 22);
+            this.profilenamebox.TabIndex = 13;
+            // 
+            // saveprofilebutton
+            // 
+            this.saveprofilebutton.Location = new System.Drawing.Point(666, 221);
+            this.saveprofilebutton.Name = "saveprofilebutton";
+            this.saveprofilebutton.Size = new System.Drawing.Size(75, 23);
+            this.saveprofilebutton.TabIndex = 14;
+            this.saveprofilebutton.Text = "save";
+            this.saveprofilebutton.UseVisualStyleBackColor = true;
+            this.saveprofilebutton.Click += new System.EventHandler(this.saveprofilebox_Click);
+            // 
+            // profilebox
+            // 
+            this.profilebox.FormattingEnabled = true;
+            this.profilebox.ItemHeight = 16;
+            this.profilebox.Location = new System.Drawing.Point(531, 246);
+            this.profilebox.Name = "profilebox";
+            this.profilebox.Size = new System.Drawing.Size(120, 84);
+            this.profilebox.TabIndex = 15;
+            // 
+            // loadprofilebutton
+            // 
+            this.loadprofilebutton.Location = new System.Drawing.Point(666, 288);
+            this.loadprofilebutton.Name = "loadprofilebutton";
+            this.loadprofilebutton.Size = new System.Drawing.Size(75, 23);
+            this.loadprofilebutton.TabIndex = 16;
+            this.loadprofilebutton.Text = "load";
+            this.loadprofilebutton.UseVisualStyleBackColor = true;
+            this.loadprofilebutton.Click += new System.EventHandler(this.loadprofilebutton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.loadprofilebutton);
+            this.Controls.Add(this.profilebox);
+            this.Controls.Add(this.saveprofilebutton);
+            this.Controls.Add(this.profilenamebox);
             this.Controls.Add(this.connectbutton);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.portcheckbox);
             this.Controls.Add(this.portbox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.ipbox);
@@ -176,12 +220,16 @@
         private System.Windows.Forms.TextBox ipbox;
         private System.Windows.Forms.TextBox portbox;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox portcheckbox;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button connectbutton;
+        private System.Windows.Forms.TextBox profilenamebox;
+        private System.Windows.Forms.Button saveprofilebutton;
+        private System.Windows.Forms.ListBox profilebox;
+        private System.Windows.Forms.Button loadprofilebutton;
     }
 }
 
