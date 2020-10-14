@@ -18,7 +18,7 @@ namespace WEsshClient
         public Form1()
         {
             InitializeComponent();
-            ProfileDir = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\Profiles";
+            ProfileDir = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\Profiles";
             InitProfiles();
         }
 
@@ -32,7 +32,12 @@ namespace WEsshClient
                 sw.WriteLine(ipbox.Text);
                 sw.WriteLine(usernamebox.Text);
                 sw.WriteLine(portbox.Text);
-               
+                sw.WriteLine(sshkeylabel.Text);
+                sw.WriteLine(portcheckbox.Checked);
+                foreach (string item in portforwardbox.Items)
+                {
+                    sw.WriteLine(item);
+                }
                 //Close the file
                 sw.Close();
             }
@@ -55,7 +60,20 @@ namespace WEsshClient
                 ipbox.Text = sr.ReadLine();
                 usernamebox.Text = sr.ReadLine();
                 portbox.Text = sr.ReadLine();
+                sshkeylabel.Text = sr.ReadLine();
+                if (sr.ReadLine() == "True")
+                {
+                    portcheckbox.Checked = true;
+                }
                 
+                line = sr.ReadLine();
+                
+                while(line != null)
+                {
+                    portforwardbox.Items.Add(line);
+                    line = sr.ReadLine();
+
+                }
                 //close the file
                 sr.Close();
  
@@ -70,6 +88,8 @@ namespace WEsshClient
         private void InitProfiles()
         {
             profilebox.Items.Clear();
+
+            Directory.CreateDirectory(ProfileDir);
 
             string[] files = Directory.GetFiles(ProfileDir);
             foreach (string file in files)
@@ -89,9 +109,18 @@ namespace WEsshClient
             Process process = new Process();
             command ="ssh " + usernamebox.Text + "@" + ipbox.Text;
             command += " -p " + portbox.Text;
+            if (sshkeylabel.Text != "")
+            {
+                command += " -i " + sshkeylabel.Text;
+            }
+
             if (portcheckbox.Checked)
             {
-                MessageBox.Show("Port forwarding not implemented yet!");
+                foreach (string item in portforwardbox.Items)
+                {
+                    command += " -L " + item;
+                }
+
             }
 
             process.StartInfo.FileName = "C:\\Windows\\system32\\cmd.exe";
@@ -111,6 +140,28 @@ namespace WEsshClient
         {
             LoadProfile();
             InitProfiles();
+        }
+
+        private void portforwardaddbutton_Click(object sender, EventArgs e)
+        {
+            portforwardbox.Items.Add(portforwardtextbox.Text);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    sshkeylabel.Text = openFileDialog1.FileName;
+                   
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Security error.\n\nError message: {ex.Message}\n\n" +
+                    $"Details:\n\n{ex.StackTrace}");
+                }
+            }
         }
     }
 }

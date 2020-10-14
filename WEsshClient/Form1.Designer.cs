@@ -35,15 +35,19 @@
             this.portbox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.portcheckbox = new System.Windows.Forms.CheckBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.portforwardbox = new System.Windows.Forms.ListBox();
+            this.portforwardaddbutton = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.portforwardtextbox = new System.Windows.Forms.TextBox();
             this.connectbutton = new System.Windows.Forms.Button();
             this.profilenamebox = new System.Windows.Forms.TextBox();
             this.saveprofilebutton = new System.Windows.Forms.Button();
             this.profilebox = new System.Windows.Forms.ListBox();
             this.loadprofilebutton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.sshkeylabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -104,39 +108,40 @@
             this.portcheckbox.Text = "Port Forwarding?";
             this.portcheckbox.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // portforwardbox
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(67, 269);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(120, 84);
-            this.listBox1.TabIndex = 8;
+            this.portforwardbox.FormattingEnabled = true;
+            this.portforwardbox.ItemHeight = 16;
+            this.portforwardbox.Location = new System.Drawing.Point(67, 269);
+            this.portforwardbox.Name = "portforwardbox";
+            this.portforwardbox.Size = new System.Drawing.Size(120, 84);
+            this.portforwardbox.TabIndex = 8;
             // 
-            // button1
+            // portforwardaddbutton
             // 
-            this.button1.Location = new System.Drawing.Point(352, 220);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.portforwardaddbutton.Location = new System.Drawing.Point(309, 223);
+            this.portforwardaddbutton.Name = "portforwardaddbutton";
+            this.portforwardaddbutton.Size = new System.Drawing.Size(75, 23);
+            this.portforwardaddbutton.TabIndex = 9;
+            this.portforwardaddbutton.Text = "button1";
+            this.portforwardaddbutton.UseVisualStyleBackColor = true;
+            this.portforwardaddbutton.Click += new System.EventHandler(this.portforwardaddbutton_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(64, 223);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(167, 17);
+            this.label4.Size = new System.Drawing.Size(126, 17);
             this.label4.TabIndex = 10;
-            this.label4.Text = "Remote Port To Forward:";
+            this.label4.Text = "Port Forward Rule:";
             // 
-            // textBox1
+            // portforwardtextbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(237, 221);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 4;
+            this.portforwardtextbox.Location = new System.Drawing.Point(192, 223);
+            this.portforwardtextbox.Name = "portforwardtextbox";
+            this.portforwardtextbox.Size = new System.Drawing.Size(100, 22);
+            this.portforwardtextbox.TabIndex = 4;
             // 
             // connectbutton
             // 
@@ -150,7 +155,7 @@
             // 
             // profilenamebox
             // 
-            this.profilenamebox.Location = new System.Drawing.Point(551, 218);
+            this.profilenamebox.Location = new System.Drawing.Point(531, 220);
             this.profilenamebox.Name = "profilenamebox";
             this.profilenamebox.Size = new System.Drawing.Size(100, 22);
             this.profilenamebox.TabIndex = 13;
@@ -184,20 +189,54 @@
             this.loadprofilebutton.UseVisualStyleBackColor = true;
             this.loadprofilebutton.Click += new System.EventHandler(this.loadprofilebutton_Click);
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(64, 380);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(83, 21);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "SSH key:";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(61, 404);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 18;
+            this.button1.Text = "Open File";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // sshkeylabel
+            // 
+            this.sshkeylabel.AutoSize = true;
+            this.sshkeylabel.Location = new System.Drawing.Point(141, 380);
+            this.sshkeylabel.Name = "sshkeylabel";
+            this.sshkeylabel.Size = new System.Drawing.Size(0, 21);
+            this.sshkeylabel.TabIndex = 19;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.sshkeylabel);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.loadprofilebutton);
             this.Controls.Add(this.profilebox);
             this.Controls.Add(this.saveprofilebutton);
             this.Controls.Add(this.profilenamebox);
             this.Controls.Add(this.connectbutton);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.portforwardtextbox);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.portforwardaddbutton);
+            this.Controls.Add(this.portforwardbox);
             this.Controls.Add(this.portcheckbox);
             this.Controls.Add(this.portbox);
             this.Controls.Add(this.label3);
@@ -221,15 +260,19 @@
         private System.Windows.Forms.TextBox portbox;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox portcheckbox;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ListBox portforwardbox;
+        private System.Windows.Forms.Button portforwardaddbutton;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox portforwardtextbox;
         private System.Windows.Forms.Button connectbutton;
         private System.Windows.Forms.TextBox profilenamebox;
         private System.Windows.Forms.Button saveprofilebutton;
         private System.Windows.Forms.ListBox profilebox;
         private System.Windows.Forms.Button loadprofilebutton;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label sshkeylabel;
     }
 }
 
