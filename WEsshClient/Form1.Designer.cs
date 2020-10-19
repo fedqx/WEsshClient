@@ -123,7 +123,7 @@
             this.portforwardaddbutton.Name = "portforwardaddbutton";
             this.portforwardaddbutton.Size = new System.Drawing.Size(75, 23);
             this.portforwardaddbutton.TabIndex = 9;
-            this.portforwardaddbutton.Text = "button1";
+            this.portforwardaddbutton.Text = "Add\r\n";
             this.portforwardaddbutton.UseVisualStyleBackColor = true;
             this.portforwardaddbutton.Click += new System.EventHandler(this.portforwardaddbutton_Click);
             // 
@@ -166,7 +166,7 @@
             this.saveprofilebutton.Name = "saveprofilebutton";
             this.saveprofilebutton.Size = new System.Drawing.Size(75, 23);
             this.saveprofilebutton.TabIndex = 14;
-            this.saveprofilebutton.Text = "save";
+            this.saveprofilebutton.Text = "Save";
             this.saveprofilebutton.UseVisualStyleBackColor = true;
             this.saveprofilebutton.Click += new System.EventHandler(this.saveprofilebox_Click);
             // 
@@ -185,7 +185,7 @@
             this.loadprofilebutton.Name = "loadprofilebutton";
             this.loadprofilebutton.Size = new System.Drawing.Size(75, 23);
             this.loadprofilebutton.TabIndex = 16;
-            this.loadprofilebutton.Text = "load";
+            this.loadprofilebutton.Text = "Load";
             this.loadprofilebutton.UseVisualStyleBackColor = true;
             this.loadprofilebutton.Click += new System.EventHandler(this.loadprofilebutton_Click);
             // 
@@ -196,11 +196,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(64, 380);
+            this.label5.Location = new System.Drawing.Point(65, 384);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(83, 21);
+            this.label5.Size = new System.Drawing.Size(125, 17);
             this.label5.TabIndex = 17;
-            this.label5.Text = "SSH key:";
+            this.label5.Text = "Selected SSH key:";
             // 
             // button1
             // 
@@ -215,9 +215,9 @@
             // sshkeylabel
             // 
             this.sshkeylabel.AutoSize = true;
-            this.sshkeylabel.Location = new System.Drawing.Point(141, 380);
+            this.sshkeylabel.Location = new System.Drawing.Point(204, 384);
             this.sshkeylabel.Name = "sshkeylabel";
-            this.sshkeylabel.Size = new System.Drawing.Size(0, 21);
+            this.sshkeylabel.Size = new System.Drawing.Size(0, 17);
             this.sshkeylabel.TabIndex = 19;
             // 
             // Form1
@@ -245,7 +245,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "WEssh";
             this.ResumeLayout(false);
             this.PerformLayout();
 
